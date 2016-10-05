@@ -20,16 +20,16 @@ def draw_tree(path, listCount, space):
     for fPos, fileName in enumerate(fList):
         nextPath = os.path.join(path, fileName)
         if fPos == len(fList) - 1:
-            print(space + "`-- " + fileName)
+            print(space + "└── " + fileName)
         else:
-            print(space + "|-- " + fileName)
+            print(space + "├── " + fileName)
         if os.path.isdir(nextPath):
             # update number of folders
             listCount[0] += 1
             if fPos == len(fList) - 1:
                 draw_tree(nextPath, listCount, space + "    ")
             else:
-                draw_tree(nextPath, listCount, space + '|   ')
+                draw_tree(nextPath, listCount, space + '│   ')
         else:
             # update number of files
             listCount[1] += 1
